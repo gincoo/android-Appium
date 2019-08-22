@@ -1,6 +1,6 @@
 #coding=utf-8
-import sys
-sys.path.append("E:/Teacher/Imooc/AppiumPython")
+# import sys
+# sys.path.append("E:/Teacher/Imooc/AppiumPython")
 from util.opera_excel import OperaExcel
 class GetData:
 	def __init__(self):
@@ -65,4 +65,4 @@ class GetData:
 
 if __name__ == '__main__':
 	get = GetData()
-	print get.get_element_key(6)
+	print(get.get_element_key(6))

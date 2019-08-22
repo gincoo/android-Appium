@@ -51,8 +51,8 @@ class OperaExcel:
 
 if __name__ == '__main__':
 	opera = OperaExcel()
-	print opera.get_lines()
-	print opera.write_value(6,'pass')
+	print(opera.get_lines())
+	print(opera.write_value(6,'pass'))
 
 
 

@@ -1,12 +1,13 @@
 #coding=utf-8
-import sys
-sys.path.append('E:/Teacher/Imooc/AppiumPython')
+# import sys
+# sys.path.append('E:/Teacher/Imooc/AppiumPython')
 from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-from util.read_init import ReadIni
-from util.get_by_local import GetByLocal
+from util.find_element import FindElement
+
+
 def get_driver():
 	capabilities = {
 	  "platformName": "Android",
@@ -16,7 +17,7 @@ def get_driver():
 	  "appWaitActivity":"cn.com.open.mooc.user.register.MCPhoneRegisterAty",
 	  "noReset":"true"
 	}
-	driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub",capabilities)
+	driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub",capabilities) # Appium 默认地址:http://127.0.0.1:4723/wd/hub
 	time.sleep(10)
 	return driver
 
@@ -70,11 +71,11 @@ def swipe_on(direction):
 		swipe_right()
 
 def go_login():
-	print driver.find_element_by_id('cn.com.open.mooc:id/tv_go_login')
+	print(driver.find_element_by_id('cn.com.open.mooc:id/tv_go_login'))
 	driver.find_element_by_id('cn.com.open.mooc:id/tv_go_login').click()
 
 def login():
-	get_by_local = GetByLocal(driver)	
+	get_by_local = FindElement(driver)
 	user_element = get_by_local.get_element('username')
 	user_element.send_keys('18513199586')
 	
@@ -83,7 +84,7 @@ def login():
 
 def login_by_class():
 	element = driver.find_element_by_class_name('android.widget.TextView')
-	print element
+	print(element)
 	elements = driver.find_elements_by_class_name('android.widget.TextView')
 	elements[4].click()
 	#element.click()
@@ -122,13 +123,13 @@ def get_web_view():
 		driver.switch_to.context(webview[0])
 		driver.find_element_by_id('cn.com.open.mooc:id/left_icon').click()
 		raise e
-	print webview
+	print(webview)
 
 def get_tost():
 	time.sleep(2)
 	driver.find_element_by_id('cn.com.open.mooc:id/account_edit').send_keys('18513199586')
-	tost_element = ("xpath","//*[contains(@text,'请输入密码')]")
-	WebDriverWait(driver,10,0.1).until(EC.presence_of_element_located(tost_element))
+	toast_element = ("xpath","//*[contains(@text,'请输入密码')]")
+	WebDriverWait(driver,10,0.1).until(EC.presence_of_element_located(toast_element))# 使用这个等待查询替换sleep()查询
 
 driver =get_driver()
 #swipe_on('left')

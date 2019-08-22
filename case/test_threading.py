@@ -1,7 +1,7 @@
 #coding = utf-8
 import threading
 def sum(a):
-	print a+1
+	print(a+1)
 threads = []
 for i in range(3):
 	#print i

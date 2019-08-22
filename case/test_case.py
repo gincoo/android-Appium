@@ -20,7 +20,7 @@ class CaseTest(ParameTestCase):
 	@classmethod
 	def setUpClass(cls):
 		global params
-		print "这个是setupclass里面的参数:",params
+		print("这个是setupclass里面的参数:",params)
 		if params == 0:
 			port = 4723
 			device = '127.0.0.1:21503'
@@ -40,10 +40,10 @@ class CaseTest(ParameTestCase):
 		cls.login_business = LoginBusiness(cls.driver)
 
 	def setUp(self):
-		print "this is setup"
+		print("this is setup")
 
 	def test_01(self):
-		print "这个是测试方法里面的：",self.param
+		print("这个是测试方法里面的：",self.param)
 		time.sleep(3)
 		
 		self.login_business.login_pass()
@@ -52,14 +52,14 @@ class CaseTest(ParameTestCase):
 		#self.assertFalse(flag)
 	#@unittest.skip("CaseTest")
 	def test_02(self):
-		print "this is case02"
+		print("this is case02")
 		flag = self.login_business.login_user_error()
 		self.assertTrue(flag)
 	def tearDown(self):
-		print "this is teardown"
+		print("this is teardown")
 	@classmethod
 	def tearDownClass(cls):
-		print "this is class teardown"
+		print("this is class teardown")
 
 def get_suite(i):
 	suite = unittest.TestSuite()
@@ -73,7 +73,7 @@ def get_suite(i):
 if __name__ == '__main__':
 	threads = []
 	for i in range(2):
-		print i
+		print(i)
 		t = threading.Thread(target=get_suite,args=(i,))
 		threads.append(t)
 	for j in threads:

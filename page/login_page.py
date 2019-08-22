@@ -1,16 +1,19 @@
 #coding=utf-8
-from util.get_by_local import GetByLocal
+from util.find_element import FindElement
 import time
 from base.base_driver import BaseDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+# Page 传值调用FindElement函数,获取页面元素.
 class LoginPage:
+
 	# 获取登录页面所有的页面元素信息
 	def __init__(self,i):
 		base_driver = BaseDriver()
 		self.driver = base_driver.android_driver(i)
-		self.get_by_local = GetByLocal(self.driver)
+		self.get_by_local = FindElement(self.driver)
 
 	def get_username_element(self):
 		'''

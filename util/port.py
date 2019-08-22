@@ -1,5 +1,5 @@
 #coding=utf-8
-from dos_cmd import DosCmd
+from util.dos_cmd import DosCmd
 class Port:
 	def port_is_used(self,port_num):
 		'''
@@ -29,7 +29,7 @@ class Port:
 				start_port = start_port +1
 			return port_list
 		else:
-			print "生成可用端口失败"
+			print("生成可用端口失败")
 			return None
 
 
@@ -38,4 +38,4 @@ class Port:
 if __name__ == '__main__':
 	port = Port()
 	li = [1,2,3,4,5]
-	print port.create_port_list(4722,li)
+	print(port.create_port_list(4722,li))

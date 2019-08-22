@@ -2,9 +2,11 @@
 import time
 from appium import webdriver
 from util.write_user_command import WriteUserCommand
+
 class BaseDriver:
+
 	def android_driver(self,i):
-		print "this is android_driver:",i
+		print("this is android_driver:",i)
 		#devices_name adb devices
 		#port
 		write_file = WriteUserCommand()

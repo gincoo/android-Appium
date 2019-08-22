@@ -1,19 +1,22 @@
 #coding=utf-8
-from dos_cmd import DosCmd
-from port import Port
+from util.dos_cmd import DosCmd
+from util.port import Port
 import threading
 import time
-from write_user_command import WriteUserCommand
+from util.write_user_command import WriteUserCommand
+
+# 无 GUI 启动 Appium 服务
 class Server:
+
 	def __init__(self):
 		self.dos = DosCmd()
 		self.device_list = self.get_devices()
 		self.write_file = WriteUserCommand()
+
 	def get_devices(self):
 		'''
 		获取设备信息
 		'''
-		
 		devices_list = []
 		result_list = self.dos.excute_cmd_result('adb devices')
 		if len(result_list)>=2:
@@ -26,6 +29,7 @@ class Server:
 			return devices_list
 		else:
 			return None
+
 	def create_port_list(self,start_port):
 		'''
 		创建可用端口
@@ -57,8 +61,7 @@ class Server:
 		启动服务
 		'''
 		self.start_list = self.create_command_list(i)
-		print self.start_list
-
+		print(self.start_list)
 		self.dos.excute_cmd(self.start_list[0])
 
 	def kill_server(self):
@@ -80,4 +83,4 @@ class Server:
 
 if __name__ == '__main__':
 	server = Server()
-	print server.main()
+	print(server.main())

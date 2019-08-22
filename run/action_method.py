@@ -1,5 +1,5 @@
 # coding=utf-8
-from util.get_by_local import GetByLocal
+from util.find_element import GetByLocal
 from base.base_driver import BaseDriver
 import time
 from selenium.webdriver.support.ui import WebDriverWait
@@ -80,12 +80,12 @@ class ActionMethod:
         if element == None:
             return None
         return element
-        
-	def get_tost_element(self,*args):
-		'''
-		获取tostelement
-		'''
-		time.sleep(2)
-		tost_element = ("xpath","//*[contains(@text,"+args[0]+")]")
-		return WebDriverWait(self.driver,10,0.1).until(EC.presence_of_element_located(tost_element))
+
+    def get_tost_element(self, *args):
+        '''
+        获取tostelement
+        '''
+        time.sleep(2)
+        tost_element = ("xpath", "//*[contains(@text," + args[0] + ")]")
+        return WebDriverWait(self.driver, 10, 0.1).until(EC.presence_of_element_located(tost_element))
 

@@ -1,25 +1,27 @@
 #coding=utf-8
-import sys
-sys.path.append("E:/Teacher/Imooc/AppiumPython")
-from get_data import GetData
-from action_method import ActionMethod
+
+from run.get_data import GetData
+from run.action_method import ActionMethod
 from util.server import Server
+
+
 class RunMain:
+
 	def run_method(self):
 		server = Server()
 		server.main()
 		data = GetData()
 		action_method = ActionMethod()
 		lines = data.get_case_lines()
+
 		for i in range(1,lines):
 			handle_step = data.get_handle_step(i)
 			element_key = data.get_element_key(i)
 			handle_value = data.get_handle_value(i)
 			expect_key = data.get_expect_element(i)
 			expect_step = data.get_expect_handle(i)
-			#input()  login_button
-			#input  str
-			#None
+
+
 			excute_method = getattr(action_method,handle_step)
 			if element_key != None:
 				excute_method(element_key,handle_value)
@@ -29,7 +31,7 @@ class RunMain:
 				expect_result = getattr(action_method,expect_step)
 				result = expect_result(expect_key)
 				if result:
-					data.write_value(i,"passs")
+					data.write_value(i,"pass")
 				else:
 					data.write_value(i,"fail")
 			
