@@ -15,7 +15,6 @@ class DosCmd:
 		for i in result:
 			if i =='\n':# 避免重复,readlines()已保留了换行符,
 				continue
-
 			result_list.append(i.strip('\n'))
 		return result_list
 
@@ -23,6 +22,5 @@ class DosCmd:
 		os.system(command)
 
 if __name__ == '__main__':
-	print('helloworld')
-	# dos = DosCmd()
-	# print(dos.excute_cmd_result('adb devices'))
+	dos = DosCmd()
+	print(dos.excute_cmd_result('adb devices'))

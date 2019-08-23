@@ -2,6 +2,8 @@
 # import sys
 # sys.path.append("E:/Teacher/Imooc/AppiumPython")
 from util.opera_excel import OperaExcel
+
+
 class GetData:
 	def __init__(self):
 		self.opera_excel = OperaExcel()
