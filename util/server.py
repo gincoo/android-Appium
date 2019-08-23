@@ -72,9 +72,9 @@ class Server:
         启动服务
         可以通过多线程,根据设备数启动服务
         '''
-        self.start_list = self.create_command_list(i)
+        self.start_list = self.create_command_list(i) #生成命令
         print(self.start_list)
-        self.dos.excute_cmd(self.start_list[0])
+        self.dos.excute_cmd(self.start_list[0])#执行命令
 
     def kill_server(self):
         server_list = self.dos.excute_cmd_result('tasklist | find "node.exe"')
@@ -82,6 +82,10 @@ class Server:
             self.dos.excute_cmd('taskkill -F -PID node.exe')
 
     def main(self):
+        """
+        这里使用threading 框架启动,
+        :return:
+        """
         thread_list = []
         self.kill_server()
         self.write_file.clear_data()

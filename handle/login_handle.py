@@ -36,7 +36,7 @@ class LoginHandle:
 
 	def get_fail_tost(self,message):
 		'''
-		获取tost，根据返回信息进行反数据
+		获取tost，根据返回信息进行数据
 		'''
 		tost_element = self.login_page.get_tost_element(message)
 		if tost_element:

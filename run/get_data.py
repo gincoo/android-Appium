@@ -3,8 +3,12 @@
 # sys.path.append("E:/Teacher/Imooc/AppiumPython")
 from util.opera_excel import OperaExcel
 
-
+#
+# 操作获取Excel文件中对应的关键字元素
+# (如Excel文件内容发生变动,直接操作此类即可)
+#
 class GetData:
+
 	def __init__(self):
 		self.opera_excel = OperaExcel()
 

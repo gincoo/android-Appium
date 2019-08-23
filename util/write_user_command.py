@@ -1,12 +1,12 @@
 # coding=utf-8
 import yaml
 import os
-import json
 
 path = os.path.abspath(os.path.dirname(os.getcwd()) + '/config/userconfig.yaml')
 
-
-# 存储用户命令
+#
+# appium 用户命令关键参数操作类
+# yaml 文件操作类
 class WriteUserCommand:
 
     def read_data(self):

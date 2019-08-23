@@ -5,8 +5,9 @@ from base.base_driver import BaseDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+#
 # Page 传值调用FindElement函数,获取页面元素.
+#
 class LoginPage:
 
 	# 获取登录页面所有的页面元素信息
@@ -47,7 +48,7 @@ class LoginPage:
 
 	def get_tost_element(self,message):
 		'''
-		获取tostelement
+		获取tost_element
 		'''
 		time.sleep(2)
 		tost_element = ("xpath","//*[contains(@text,"+message+")]")

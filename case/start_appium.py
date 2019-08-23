@@ -7,7 +7,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from util.find_element import FindElement
 
-
+#
+# 基本 appium 基础学习操作类
+#
 def get_driver():
 	capabilities = {
 	  "platformName": "Android",
@@ -75,12 +77,11 @@ def go_login():
 	driver.find_element_by_id('cn.com.open.mooc:id/tv_go_login').click()
 
 def login():
-	get_by_local = FindElement(driver)
-	user_element = get_by_local.get_element('username')
+	find = FindElement(driver)
+	user_element = find.get_element('username')
 	user_element.send_keys('18513199586')
-	
-	get_by_local.get_element('password').send_keys('111111')
-	get_by_local.get_element('login_button').click()
+	find.get_element('password').send_keys('111111')
+	find.get_element('login_button').click()
 
 def login_by_class():
 	element = driver.find_element_by_class_name('android.widget.TextView')
@@ -96,7 +97,6 @@ def login_by_node():
 	elements[1].send_keys('111111')
 	driver.find_element_by_id('cn.com.open.mooc:id/login_lable').click()
 
-
 def login_by_uiautomator():
 	driver.find_element_by_android_uiautomator('new UiSelector().text("18513199586")').clear()
 	driver.find_element_by_android_uiautomator('new UiSelector().text("手机号/邮箱")').send_keys('18513199587')
@@ -107,6 +107,7 @@ def login_by_xpath():
 	#driver.find_element_by_xpath('//android.widget.TextView[@text="忘记密码"]').click()
 	driver.find_element_by_xpath('//android.widget.TextView[@resource-id="cn.com.open.mooc:id/login_lable"]/../preceding-sibling::android.widget.RelativeLayout').send_keys('123123')
 	driver.find_element_by_xpath('//android.widget.TextView[@resource-id="cn.com.open.mooc:id/login_lable"]/../preceding-sibling::*[@index="2"]').send_keys('222222')
+
 def get_web_view():
 	time.sleep(10)
 	webview = driver.contexts
@@ -118,8 +119,6 @@ def get_web_view():
 	try:
 		driver.find_element_by_id('cn.com.open.mooc:id/left_icon').click()
 	except Exception as e:
-		
-	
 		driver.switch_to.context(webview[0])
 		driver.find_element_by_id('cn.com.open.mooc:id/left_icon').click()
 		raise e

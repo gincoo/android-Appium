@@ -5,20 +5,22 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+#
+# 封装了具体的 appium API 操作控制
+#
 class ActionMethod:
 
     def __init__(self):
         base_driver = BaseDriver()
         self.driver = base_driver.android_driver(0)
-        self.get_by_local = FindElement(self.driver)
+        self.find_element = FindElement(self.driver)
 
     def input(self, *args):
         """
         输入值
         """
         # key,value
-        element = self.get_by_local.get_element(args[0])
+        element = self.find_element.get_element(args[0])
         if element == None:
             return args[0], "元素没找到"
         element.send_keys(args[1])
@@ -27,7 +29,7 @@ class ActionMethod:
         '''
         元素点击
         '''
-        element = self.get_by_local.get_element(args[0])
+        element = self.find_element.get_element(args[0])
         if element == None:
             return args[0], "元素没找到"
         element.click()
@@ -75,15 +77,15 @@ class ActionMethod:
         self.driver.swipe(x1, y1, x1, y)
 
     def get_element(self, *args):
-        element = self.get_by_local.get_element(args[0])
+        element = self.find_element.get_element(args[0])
         if element == None:
             return None
         return element
 
-    def get_tost_element(self, *args):
+    def get_toast_element(self, *args):
         '''
-        获取tostelement
+        使用 WebDriverWait等待,判断是否存在 toast_element 具体目标元素
         '''
-        time.sleep(2)
-        tost_element = ("xpath", "//*[contains(@text," + args[0] + ")]")
-        return WebDriverWait(self.driver, 10, 0.1).until(EC.presence_of_element_located(tost_element))
+        # time.sleep(2)
+        toast_element = ("xpath", "//*[contains(@text," + args[0] + ")]")
+        return WebDriverWait(self.driver, 10, 0.1).until(EC.presence_of_element_located(toast_element))
